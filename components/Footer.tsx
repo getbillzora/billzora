@@ -45,6 +45,21 @@ export default function Footer() {
             <p className="font-semibold text-ink-900">Company</p>
             <ul className="mt-2 space-y-1 text-gray-500">
               <li>
+                <Link href="/about" className="hover:text-teal-800">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/features" className="hover:text-teal-800">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="hover:text-teal-800">
+                  Pricing
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy" className="hover:text-teal-800">
                   Privacy
                 </Link>

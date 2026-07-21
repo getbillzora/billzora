@@ -62,6 +62,7 @@ export default function PricingCards() {
       {PLANS.map((plan) => (
         <div
           key={plan.name}
+          id={plan.name.toLowerCase()}
           className={
             "flex flex-col rounded-card bg-white p-6 " +
             (plan.featured

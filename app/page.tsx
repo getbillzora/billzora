@@ -4,6 +4,18 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ComparisonTable from "@/components/ComparisonTable";
 import PricingCards from "@/components/PricingCards";
+import Faq from "@/components/Faq";
+import { HOME_FAQS } from "@/lib/homeFaqs";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export const metadata: Metadata = {
   title: "Cloud Accounting Software for India | Billzora",
@@ -47,6 +59,10 @@ const FEATURES = [
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Nav />
 
       {/* Hero */}
@@ -124,6 +140,27 @@ export default function HomePage() {
           <div className="mt-8">
             <PricingCards />
           </div>
+          <p className="mt-6 text-sm text-gray-500">
+            See the{" "}
+            <Link href="/pricing" className="text-teal-800 underline">
+              full pricing breakdown
+            </Link>{" "}
+            or explore{" "}
+            <Link href="/features" className="text-teal-800 underline">
+              all features
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="mx-auto max-w-4xl px-4 py-16 lg:px-8">
+        <h2 className="text-2xl font-bold text-ink-900 sm:text-3xl">
+          Frequently asked questions
+        </h2>
+        <div className="mt-8">
+          <Faq items={HOME_FAQS} />
         </div>
       </section>
 
