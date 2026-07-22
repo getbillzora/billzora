@@ -12,11 +12,14 @@ type Status = "idle" | "working" | "done";
 interface Props {
   heading?: string;
   subheading?: string;
+  /** Document label shown on the preview/PDF, e.g. "PROFORMA INVOICE". */
+  docLabel?: string;
 }
 
 export default function InvoiceGenerator({
   heading = "Free GST Invoice Generator",
   subheading = "Create a GST-compliant invoice in seconds. CGST/SGST and IGST are calculated automatically. No login required — download the PDF or share on WhatsApp.",
+  docLabel = "TAX INVOICE",
 }: Props = {}) {
   const [form, setForm] = useState(defaultForm);
   const [qr, setQr] = useState<string | null>(null);
@@ -78,7 +81,12 @@ export default function InvoiceGenerator({
       import("./InvoicePDF"),
     ]);
     const doc = (
-      <InvoicePDF invoice={invoice} totals={totals} upiQrDataUrl={qr} />
+      <InvoicePDF
+        invoice={invoice}
+        totals={totals}
+        upiQrDataUrl={qr}
+        docLabel={docLabel}
+      />
     );
     return pdf(doc).toBlob();
   }
@@ -203,6 +211,7 @@ export default function InvoiceGenerator({
               invoice={invoice}
               totals={totals}
               upiQrDataUrl={qr}
+              docLabel={docLabel}
             />
           </div>
 

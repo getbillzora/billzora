@@ -24,6 +24,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  const toolPages: MetadataRoute.Sitemap = [
+    "/proforma-invoice-generator",
+    "/online-receipt-generator",
+    "/quotation-maker",
+    "/gst-calculator",
+    "/invoice-template",
+  ].map((path) => ({
+    url: `${BASE_URL}${path}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   const comparisonPages: MetadataRoute.Sitemap = COMPETITORS.map((c) => ({
     url: `${BASE_URL}/billzora-vs-${c.slug}`,
     lastModified: now,
@@ -31,5 +44,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...comparisonPages];
+  return [...staticPages, ...toolPages, ...comparisonPages];
 }

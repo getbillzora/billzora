@@ -7,13 +7,19 @@ interface Props {
   invoice: InvoiceData;
   totals: InvoiceTotals;
   upiQrDataUrl?: string | null;
+  docLabel?: string;
 }
 
 /**
  * On-screen invoice. Deliberately mirrors the <InvoicePDF /> layout so the
  * preview is an honest representation of the downloaded file.
  */
-export default function InvoicePreview({ invoice, totals, upiQrDataUrl }: Props) {
+export default function InvoicePreview({
+  invoice,
+  totals,
+  upiQrDataUrl,
+  docLabel = "TAX INVOICE",
+}: Props) {
   const { business, client, meta } = invoice;
   const showCgstSgst = !totals.interState;
 
@@ -49,7 +55,7 @@ export default function InvoicePreview({ invoice, totals, upiQrDataUrl }: Props)
         </div>
         <div className="text-right">
           <p className="text-xl font-bold tracking-wide text-ink-900">
-            TAX INVOICE
+            {docLabel}
           </p>
           <p className="mt-1 text-sm font-medium">
             {meta.invoiceNumber || "—"}

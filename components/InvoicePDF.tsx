@@ -114,15 +114,21 @@ interface Props {
   invoice: InvoiceData;
   totals: InvoiceTotals;
   upiQrDataUrl?: string | null;
+  docLabel?: string;
 }
 
-export default function InvoicePDF({ invoice, totals, upiQrDataUrl }: Props) {
+export default function InvoicePDF({
+  invoice,
+  totals,
+  upiQrDataUrl,
+  docLabel = "TAX INVOICE",
+}: Props) {
   const { business, client, meta } = invoice;
   const showCgstSgst = !totals.interState;
 
   return (
     <Document
-      title={`Invoice ${meta.invoiceNumber}`}
+      title={`${docLabel} ${meta.invoiceNumber}`}
       author={business.name || "Billzora"}
     >
       <Page size="A4" style={s.page}>
@@ -148,7 +154,7 @@ export default function InvoicePDF({ invoice, totals, upiQrDataUrl }: Props) {
             </View>
           </View>
           <View>
-            <Text style={s.invoiceTitle}>TAX INVOICE</Text>
+            <Text style={s.invoiceTitle}>{docLabel}</Text>
             <Text style={{ textAlign: "right", marginTop: 2 }}>
               {meta.invoiceNumber || "-"}
             </Text>
