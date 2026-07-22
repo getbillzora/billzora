@@ -11,19 +11,19 @@ export default function Nav() {
 
         <div className="hidden items-center gap-8 md:flex">
           <Link
-            href="/#features"
+            href="/features"
             className="text-sm text-ink-900 hover:text-teal-800"
           >
             Features
           </Link>
           <Link
-            href="/#pricing"
+            href="/pricing"
             className="text-sm text-ink-900 hover:text-teal-800"
           >
             Pricing
           </Link>
           <Link
-            href="/#pricing"
+            href="/pricing#business"
             className="text-sm text-ink-900 hover:text-teal-800"
           >
             For CAs
