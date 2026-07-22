@@ -60,6 +60,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="hover:text-teal-800">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/privacy" className="hover:text-teal-800">
                   Privacy
                 </Link>

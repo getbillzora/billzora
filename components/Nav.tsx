@@ -28,6 +28,12 @@ export default function Nav() {
           >
             For CAs
           </Link>
+          <Link
+            href="/blog"
+            className="text-sm text-ink-900 hover:text-teal-800"
+          >
+            Blog
+          </Link>
         </div>
 
         <Link
