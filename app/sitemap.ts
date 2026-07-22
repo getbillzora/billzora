@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { COMPETITORS } from "@/lib/competitors";
+import { POSTS } from "@/lib/blog";
 
 const BASE_URL = "https://billzora.in";
 
@@ -40,7 +41,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.5,
     },
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
   ];
+
+  const blogPosts: MetadataRoute.Sitemap = POSTS.map((p) => ({
+    url: `${BASE_URL}/blog/${p.slug}`,
+    lastModified: new Date(p.updated),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
 
   const toolPages: MetadataRoute.Sitemap = [
     "/proforma-invoice-generator",
@@ -62,5 +76,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...toolPages, ...comparisonPages];
+  return [...staticPages, ...toolPages, ...comparisonPages, ...blogPosts];
 }
